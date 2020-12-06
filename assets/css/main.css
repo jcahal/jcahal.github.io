@@ -30,7 +30,12 @@ header {
     grid-template-rows: auto;
 }
 
+#particles {
+    /*grid-area: particles;*/
+}
+
 .info {
+    grid-area: info;
     text-align: center;
     font-size: 2em;
     margin: 0;
@@ -122,15 +127,124 @@ div.skills > ul > li > i {
 
 footer {
     height: 20vh;
+    padding: 20px;
     background: #3170EE;
 }
 
-footer > a > span.fa-stack {
+#built-with {
+    position: relative;
+    bottom: 0px;
+}
+
+#built-with img{
+    width: 30px;
+    height: 30px;
+}
+
+#admin {
+    visibility: hidden;
+    max-height: 400px;
+    padding: 5px;
+    position: fixed;
+    bottom: -300px;
+    right: 100px;
+    border-radius: 5px;
+    background: #FFFFFF;
+    box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+    overflow-y: scroll;
+}
+
+.hide {
+    visibility: hidden;
+    animation: hide .5s forwards;
+}
+  
+@keyframes hide {
+    from {opacity: 1; bottom: 20px;}
+    to {opacity: 0; bottom: -200px;}
+}
+
+.show {
+    visibility: visible !important;
+    animation: show .5s forwards;
+}
+  
+@keyframes show {
+    from {opacity: 0; bottom: -200px;}
+    to {opacity: 1; bottom: 20px;}
+}
+
+#admin-toggle {
     position: fixed;
     right: 20px;
     bottom: 20px;
 }
 
-footer > a > span > i.fas.fa-circle {
+#admin-toggle {
     color: #EEAF2F;
+}
+
+#admin-sign-in {
+    width: 25vw;
+    height: 20vh;
+}
+
+#admin-sign-in > input {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5px;
+    margin: 3px 0;
+}
+
+#admin-settings {
+    width: 25vw;
+    min-height: 15vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: 
+        "admin-projects admin-new-project admin-skills admin-new-skill"
+    ;
+}
+
+#admin-settings input {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5px;
+    margin: 3px 0;
+}
+
+#admin-settings > div {
+    margin: 0px 2px;
+    align-self: start;
+}
+
+.admin-project {
+    grid-area: "admin-projects";
+}
+
+.admin-new-project {
+    grid-area: "admin-new-project";
+}
+
+.admin-skills {
+    grid-area: "admin-skills";
+}
+
+.admin-new-skill {
+    grid-area: "admin-new-skill";
+}
+
+
+.grow {
+    visibility: visible;
+    animation: grow .5s forwards;
+}
+  
+@keyframes grow {
+    from {width: 25vw; height: 20vh;}
+    to {width: 75vw; height: 30vh;}
 }

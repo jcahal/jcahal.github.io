@@ -9,6 +9,7 @@
   <title>Jonathan Cahal, BSE Computer Systems</title>
   <meta name="description" content="My Schnazzy Personal Webpage">
 
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
   <link href="assets/css/all.min.css" rel="stylesheet"> <!-- FontAwesome -->
   <link rel="stylesheet" href="assets/css/main.css">
   <link rel="shortcut icon" type="image/png" href="assets/favicon.png" >
@@ -20,8 +21,8 @@
       <header>
         <div id="particles">
           <section class="info">
-            <h1>{{ name }}</h1>
-            <p>{{ title }}</p>
+            <h1>Jonathan Cahal</h1>
+            <p>Computer Systems Engineer</p>
             <div>
               <a aria-label="Send email" href="mailto:jacahal@gmail.com"><i class="icon-info fa fa-paper-plane" aria-hidden="true"></i></a>
               <a aria-label="My Github" target="_blank" href="https://github.com/jcahal"><i class="icon-info fab fa-github-alt" aria-hidden="true"></i></a>
@@ -36,7 +37,7 @@
           <section v-for="project in projects" class="project">
             <h1>{{ project.name }}</h1>
             <p>{{ project.description }}</p>
-            <img class="project-image" v-bind:src="'assets/images/' + project.image" v-bind:alt="project.image"/>
+            <!-- <img class="project-image" v-bind:src="'assets/images/' + project.image" v-bind:alt="project.image"/> -->
             <a v-bind:href="project.url"><i class="icon-project fas fa-globe" aria-hidden="true"></i></span></a>
             <a v-bind:href="project.source"><i class="icon-project fab fa-github-alt" aria-hidden="true"></i></span></a>
           </section>
@@ -44,19 +45,43 @@
         <h1 class="skills-title">Skills</h1>
         <div class="skills">
           <ul>
-            <li v-for="skill in skills"><i class="fas fa-check"></i>{{ skill }}</li>
+            <li v-for="skill in skills"><i class="fas fa-check"></i>{{ skill.name }}</li>
           </ul>
         </div>
       </main>
       <footer>
-        <a href="">
-          <span class="fa-stack fa-2x">
-            <i class="fas fa-circle fa-stack-2x"></i>
-            <i class="fas fa-plus fa-stack-1x fa-inverse"></i>
-          </span>
-        </a>
+        <div id="built-with">
+          <a href="https://vuejs.org">
+            <img src="assets/images/vue-logo.png" />
+          </a>
+          <img src="assets/images/plus.png" />
+          <a href="https://firebase.google.com">
+            <img src="assets/images/firebase-logo.png" />
+          </a>
+        </div>
       </footer>
     </div>
+
+    <div>
+      <aside id="admin" class="hide">
+        <div id="admin-sign-in">
+          <h3>Sign in</h3>
+          <input type="email" name="admin-email" id="admin-email" placeholder="Email">
+          <input type="password" name="admin-password" id="admin-password" placeholder="Password">
+          <input type="button" value="Sign in" onclick="adminSignIn()">
+        </div>
+      </aside>
+      <div id="admin-toggle" onclick="toggleAdminPanel()">
+        <span class="fa-stack fa-2x">
+          <i class="fas fa-circle fa-stack-2x"></i>
+          <i class="fas fa-cog fa-stack-1x fa-inverse"></i>
+        </span>
+      </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-auth.js"></script>
 
     <script src="assets/js/vue.min.js"></script>
     <script src="app/app.vue.js"></script>
