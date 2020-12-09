@@ -12,6 +12,7 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig)
 const projectsDB = firebase.database().ref('data/projects/')
 const skillsDB = firebase.database().ref('data/skills/')
+const storage  = firebase.storage().ref()
 const auth = firebase.auth()
 
 let app = new Vue({
@@ -74,6 +75,9 @@ let admin = new Vue({
                 <div v-for="project in projects">               
                     <input type="text" v-model="project.name" />
                     <input type="text" v-model="project.description" />
+                    <input type="text" v-model="project.image" />
+                    <input type="text" v-model="project.url" />
+                    <input type="text" v-model="project.source" />
                     <hr>
                 </div>
                 <input type="button" value="Update Projects" v-on:click="updateProjects" />
@@ -83,6 +87,9 @@ let admin = new Vue({
                 <h3>New Project</h3>
                 <input type="text" v-model="newProject.name" />
                 <input type="text" v-model="newProject.description" />
+                <input type="text" v-model="newProject.image" />
+                <input type="text" v-model="newProject.url" />
+                <input type="text" v-model="newProject.source" />
                 <input type="button" value="Add Skill" v-on:click="addProject" />
             </div>
 
@@ -90,6 +97,7 @@ let admin = new Vue({
                 <h3>Skills</h3>
                 <div v-for="skill in skills">
                     <input type="text" v-model="skill.name" />
+                    <input type="text" v-model="skill.level" />
                     <hr>
                 </div>
                 <input type="button" value="Update Skill" v-on:click="updateSkills" />
@@ -98,6 +106,7 @@ let admin = new Vue({
             <div class="admin-new-skill">
                 <h3>New Skill</h3>
                 <input type="text" v-model="newSkill.name" />
+                <input type="text" v-model="newSkill.level" />
                 <input type="button" value="Add Skill" v-on:click="addSkill" />
             </div>
         </div>

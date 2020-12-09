@@ -36,8 +36,8 @@
         <div class="projects">
           <section v-for="project in projects" class="project">
             <h1>{{ project.name }}</h1>
+            <img class="project-image" v-bind:src="'https://firebasestorage.googleapis.com/v0/b/jcahal-github-io.appspot.com/o/' + project.image + '?alt=media&token=345364ce-53da-4853-927d-18c256eb8083'" v-bind:alt="project.image"/>
             <p>{{ project.description }}</p>
-            <!-- <img class="project-image" v-bind:src="'assets/images/' + project.image" v-bind:alt="project.image"/> -->
             <a v-bind:href="project.url"><i class="icon-project fas fa-globe" aria-hidden="true"></i></span></a>
             <a v-bind:href="project.source"><i class="icon-project fab fa-github-alt" aria-hidden="true"></i></span></a>
           </section>
@@ -45,7 +45,10 @@
         <h1 class="skills-title">Skills</h1>
         <div class="skills">
           <ul>
-            <li v-for="skill in skills"><i class="fas fa-check"></i>{{ skill.name }}</li>
+            <li v-for="skill in skills">
+              {{ skill.name }}<br>
+              <i v-for="level in parseInt(skill.level, 10)" class="fas fa-star"></i>
+            </li>
           </ul>
         </div>
       </main>
@@ -81,6 +84,7 @@
 
     <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-storage.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-auth.js"></script>
 
     <script src="assets/js/vue.min.js"></script>

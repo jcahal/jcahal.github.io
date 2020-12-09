@@ -59,15 +59,17 @@ header {
     background: #FFFFFF;
 }
 
+
 main {
     min-height: 80vh;
     display: grid;
-    grid-template-columns: 1fr 6fr 1fr 3fr 1fr;
-    grid-template-rows: 1fr 10fr 1fr;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 10fr 1fr 10fr;
     grid-template-areas:
-        ". projects-title . skills-title ."
-        ". projects . skills ."
-        ". . . . ."
+        "projects-title"
+        "projects"
+        "skills-title"
+        "skills"
     ;
 }
 
@@ -78,7 +80,7 @@ main {
 .projects {
     grid-area: projects; 
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     grid-template-rows: auto;
 }
 
@@ -112,9 +114,9 @@ main {
 
 .skills {
     grid-area: skills;
-    border-radius: 10px;
     background: #EEAF2F;
-    font-size: 1.5em;
+    text-align: center;
+    font-size: 2em;
 }
 
 div.skills > ul {
@@ -123,6 +125,42 @@ div.skills > ul {
 
 div.skills > ul > li > i {
     margin-right: 10px;
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .skills {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    main {
+        min-height: 80vh;
+        display: grid;
+        grid-template-columns: 1fr 6fr 1fr 3fr 1fr;
+        grid-template-rows: 1fr 10fr 1fr;
+        grid-template-areas:
+            ". projects-title . skills-title ."
+            ". projects . skills ."
+            ". . . . ."
+        ;
+    }
+
+    .projects {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+    }
+
+    .skills {
+        display: block;
+        text-align: left;
+        border-radius: 10px;
+        font-size: 1.5em;
+    }
 }
 
 footer {
