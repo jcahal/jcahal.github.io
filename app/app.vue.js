@@ -63,10 +63,6 @@ let admin = new Vue({
                 filesDB.child(file.name).getMetadata().then(metadata => {
                     this.files[file.name].type = metadata.contentType
                 })
-
-                filesDB.child(file.name).getDownloadURL().then(url => {
-                    this.files[file.name].url = url
-                })
             })
         })
     },
@@ -148,9 +144,9 @@ let admin = new Vue({
                 <input type="text" v-model="newProject.name" placeholder="Name" />
                 <input type="text" v-model="newProject.description" placeholder="Description" />
                 <label for="new-project-image-selector">Select an Image</label>
-                <select id="new-project-image-selector" v-model="newProject.imageURL">
+                <select id="new-project-image-selector" v-model="newProject.image">
                     <option value="">--</option>
-                    <option v-for="file in files" v-bind:value="file.url">{{file.name}}</option>
+                    <option v-for="file in files" v-bind:value="file.name">{{ file.name }}</option>
                 </select>
                 <input type="text" v-model="newProject.url" placeholder="URL" />
                 <input type="text" v-model="newProject.source" placeholder="Source" />
@@ -176,9 +172,9 @@ let admin = new Vue({
                     <input type="text" v-model="project.name" />
                     <input type="text" v-model="project.description" />
                     <label for="project-image-selector">Select an Image</label>
-                    <select id="project-image-selector" v-model="project.imageURL">
+                    <select id="project-image-selector" v-model="project.image">
                         <option value="">--</option>
-                        <option v-for="file in files" v-bind:value="file.url">{{file.name}}</option>
+                        <option v-for="file in files" v-bind:value="file.name">{{ file.name }}</option>
                     </select>
                     <input type="text" v-model="project.url" />
                     <input type="text" v-model="project.source" />
@@ -201,7 +197,7 @@ let admin = new Vue({
                 <h3>Files</h3>
                 <div v-for="file in files">
                     {{ file.name }} | <button><i style="color: red;" class="fas fa-trash" @click="deleteFile(file)"></i></button><br>
-                    <img style="width: 150px" v-if="file.type == 'image/png'" v-bind:src="file.url" />
+                    <img style="width: 150px" v-if="file.type == 'image/png'" v-bind:src="'https://firebasestorage.googleapis.com/v0/b/jcahal-github-io.appspot.com/o/' + file.url + '?alt=media'" />
                 </div>
             </div>
         </div>
