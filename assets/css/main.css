@@ -73,6 +73,15 @@ main {
     ;
 }
 
+.loader {
+    display: none;
+    font-size: 3em;
+}
+
+.loader.show {
+    display: block;
+}
+
 .projects-title {
     grid-area: projects-title;
 }
@@ -159,7 +168,6 @@ div.skills > ul > li > i {
 }
 
 footer {
-    height: 20vh;
     padding: 20px;
     background: #3170EE;
 }
@@ -181,8 +189,9 @@ footer {
     position: fixed;
     bottom: -300px;
     right: 100px;
-    border-radius: 5px;
     background: #FFFFFF;
+    border: 5px solid #FFFFFF;
+    border-radius: 5px;
     box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.3);
     z-index: 1;
     overflow-y: scroll;
@@ -218,9 +227,20 @@ footer {
     color: #EEAF2F;
 }
 
+#admin-msg > div.error {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    color: darkred;
+    background: rgba(255, 0, 0, 0.2);
+    border-radius: 5px;
+    text-align: center;
+    padding: 5px;
+}
+
 #admin-sign-in {
     width: 25vw;
-    height: 20vh;
+    min-height: 20vh;
 }
 
 #admin-sign-in > input {
@@ -235,10 +255,11 @@ footer {
     width: 25vw;
     min-height: 15vh;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: auto;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
     grid-template-areas: 
-        "admin-projects admin-new-project admin-skills admin-new-skill"
+        "admin-new-project admin-new-skill admin-new-image"
+        "admin-projects admin-skills admin-images"
     ;
 }
 
@@ -247,7 +268,7 @@ footer {
     width: 100%;
     box-sizing: border-box;
     padding: 5px;
-    margin: 3px 0;
+    margin: 5px 0;
 }
 
 #admin-settings > div {
@@ -255,21 +276,12 @@ footer {
     align-self: start;
 }
 
-.admin-project {
-    grid-area: "admin-projects";
-}
-
-.admin-new-project {
-    grid-area: "admin-new-project";
-}
-
-.admin-skills {
-    grid-area: "admin-skills";
-}
-
-.admin-new-skill {
-    grid-area: "admin-new-skill";
-}
+#admin-projects { grid-area: "admin-projects"; }
+#admin-new-project { grid-area: "admin-new-project";}
+#admin-skills { grid-area: "admin-skills"; }
+#admin-new-skill { grid-area: "admin-new-skill"; }
+#admin-images { grid-area: "admin-images"; }
+#admin-new-image { grid-area: "admin-new-image"; }
 
 
 .grow {
@@ -278,6 +290,6 @@ footer {
 }
   
 @keyframes grow {
-    from {width: 25vw; height: 20vh;}
-    to {width: 75vw; height: 30vh;}
+    from {width: 25vw; min-height: 20vh; max-height: 30vh;}
+    to {width: 75vw; min-height: 30vh; max-height: 50vh;}
 }

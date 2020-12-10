@@ -12,7 +12,7 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig)
 const projectsDB = firebase.database().ref('data/projects/')
 const skillsDB = firebase.database().ref('data/skills/')
-const storage  = firebase.storage().ref()
+const filesDB  = firebase.storage().ref()
 const auth = firebase.auth()
 
 let app = new Vue({
@@ -37,9 +37,12 @@ let app = new Vue({
 let admin = new Vue({
     data() {
         return { 
+            user: {},
+            error: {},
             projects: {},
-            newProject: {},
             skills: {},
+            files: {},
+            newProject: {},
             newSkill: {}
         }
     },
@@ -51,63 +54,155 @@ let admin = new Vue({
         skillsDB.on('value', snapshot => {
             this.skills = snapshot.val()
         })
+
+        filesDB.listAll().then(list => {
+
+            list.items.forEach(file => {
+                this.files[file.name] = {name: file.name}
+
+                filesDB.child(file.name).getMetadata().then(metadata => {
+                    this.files[file.name].type = metadata.contentType
+                })
+
+                filesDB.child(file.name).getDownloadURL().then(url => {
+                    this.files[file.name].url = url
+                })
+            })
+        })
+    },
+    mounted() {
+        // document.getElementById('projects-loader').classList.toggle('show')
+        // document.getElementById('skills-loader').classList.toggle('show')
     },
     methods: {
-        updateProjects() {
-            projectsDB.set(this.projects)
-        },
-        updateSkills() {
-            skillsDB.set(this.skills)
-        },
         addProject() {
-            firebase.database().ref(`data/projects/${this.newProject.name}`).set(this.newProject)
+            projectsDB.child(encodeURIComponent(this.newProject.name)).set(this.newProject).catch(error => {
+                console.log(error)
+                document.getElementById('admin-msg').innerHTML = `
+                    <div class="error">${error.code}: ${error.message}</div>
+                `
+            })
             this.newProject = {}
         },
+
+        updateProject(project) {
+            projectsDB.child(encodeURIComponent(project.name)).set(project).catch(error => {
+                console.log(error)
+                document.getElementById('admin-msg').innerHTML = `
+                    <div class="error">${error.code}: ${error.message}</div>
+                `
+            })
+        },
+
+        deleteProject(project) {
+            projectsDB.child(encodeURIComponent(project.name)).remove().catch(error => {
+                console.log(error)
+                document.getElementById('admin-msg').innerHTML = `
+                    <div class="error">${error.code}: ${error.message}</div>
+                `
+            })
+        },
+
         addSkill() {
-            firebase.database().ref(`data/skills/${this.newSkill.name}`).set(this.newSkill)
+            skillsDB.child(encodeURIComponent(this.newSkill.name)).set(this.newSkill).catch(error => {
+                console.log(error)
+                document.getElementById('admin-msg').innerHTML = `
+                    <div class="error">${error.code}: ${error.message}</div>
+                `
+            })
             this.newSkill = {}
+        },
+
+        updateSkill(skill) {
+            skillsDB.child(encodeURIComponent(this.newSkill.name)).set(skill).catch(error => {
+                console.log(error)
+                document.getElementById('admin-msg').innerHTML = `
+                    <div class="error">${error.code}: ${error.message}</div>
+                `
+            })
+        },
+
+        deleteSkill(skill) {
+            skillsDB.child(encodeURIComponent(this.newSkill.name)).remove().catch(error => {
+                console.log(error)
+                document.getElementById('admin-msg').innerHTML = `
+                    <div class="error">${error.code}: ${error.message}</div>
+                `
+            })
+        },
+
+        uploadFile() {
+            let newFile = document.querySelector('#new-file').files[0]
+            filesDB.child(newFile.name).put(newFile)
+        },
+
+        deleteFile(file) {
+            filesDB.child(file.name).delete()
         }
     },
     template: `
         <div id="admin-settings">
-            <div class="admin-projects">
+
+            <div id="admin-new-project">
+                <h3>New Project</h3>
+                <input type="text" v-model="newProject.name" placeholder="Name" />
+                <input type="text" v-model="newProject.description" placeholder="Description" />
+                <label for="new-project-image-selector">Select an Image</label>
+                <select id="new-project-image-selector" v-model="newProject.imageURL">
+                    <option value="">--</option>
+                    <option v-for="file in files" v-bind:value="file.url">{{file.name}}</option>
+                </select>
+                <input type="text" v-model="newProject.url" placeholder="URL" />
+                <input type="text" v-model="newProject.source" placeholder="Source" />
+                <input type="button" value="Add Project" @click="addProject()" />
+            </div>
+
+            <div id="admin-new-skill">
+                <h3>New Skill</h3>
+                <input type="text" v-model="newSkill.name" placeholder="Name" />
+                <input type="text" v-model="newSkill.level" placeholder="Level" />
+                <input type="button" value="Add Skill" @click="addSkill" />
+            </div>
+
+            <div id="admin-new-file">
+                <h3>New File</h3>
+                <input id="new-file" type="file" />
+                <input type="button" value="Upload" @click="uploadFile" />
+            </div>
+
+            <div id="admin-projects">
                 <h3>Projects</h3>
-                <div v-for="project in projects">               
+                <div v-for="project in projects">             
                     <input type="text" v-model="project.name" />
                     <input type="text" v-model="project.description" />
-                    <input type="text" v-model="project.image" />
+                    <label for="project-image-selector">Select an Image</label>
+                    <select id="project-image-selector" v-model="project.imageURL">
+                        <option value="">--</option>
+                        <option v-for="file in files" v-bind:value="file.url">{{file.name}}</option>
+                    </select>
                     <input type="text" v-model="project.url" />
                     <input type="text" v-model="project.source" />
-                    <hr>
+                    <button><i style="color: red;" class="fas fa-trash" @click="deleteProject(project)"></i></button>
+                    <button><i style="color: green;" class="fas fa-save" @click="updateProject(project)"></i></button>
                 </div>
-                <input type="button" value="Update Projects" v-on:click="updateProjects" />
             </div>
 
-            <div class="admin-new-project">
-                <h3>New Project</h3>
-                <input type="text" v-model="newProject.name" />
-                <input type="text" v-model="newProject.description" />
-                <input type="text" v-model="newProject.image" />
-                <input type="text" v-model="newProject.url" />
-                <input type="text" v-model="newProject.source" />
-                <input type="button" value="Add Skill" v-on:click="addProject" />
-            </div>
-
-            <div class="admin-skills">
+            <div id="admin-skills">
                 <h3>Skills</h3>
                 <div v-for="skill in skills">
                     <input type="text" v-model="skill.name" />
                     <input type="text" v-model="skill.level" />
-                    <hr>
+                    <button><i style="color: red;" class="fas fa-trash" @click="deleteSkill(skill)"></i></button>
+                    <button><i style="color: green;" class="fas fa-save" @click="updateSkill(skill)"></i></button>
                 </div>
-                <input type="button" value="Update Skill" v-on:click="updateSkills" />
             </div>
 
-            <div class="admin-new-skill">
-                <h3>New Skill</h3>
-                <input type="text" v-model="newSkill.name" />
-                <input type="text" v-model="newSkill.level" />
-                <input type="button" value="Add Skill" v-on:click="addSkill" />
+            <div id="admin-files">
+                <h3>Files</h3>
+                <div v-for="file in files">
+                    {{ file.name }} | <button><i style="color: red;" class="fas fa-trash" @click="deleteFile(file)"></i></button><br>
+                    <img style="width: 150px" v-if="file.type == 'image/png'" v-bind:src="file.url" />
+                </div>
             </div>
         </div>
     `
@@ -116,15 +211,17 @@ let admin = new Vue({
 function adminSignIn() {
     let email = document.getElementById('admin-email').value
     let password = document.getElementById('admin-password').value
-    
-    auth.signInWithEmailAndPassword(email, password)
-    .then((user) => {
+
+    auth.signInWithEmailAndPassword(email, password).then(user => {
+        admin.user = user
         admin.$mount('#admin-sign-in')
-        document.getElementById('admin-settings').classList.toggle('grow')
+        document.querySelector('#admin-settings').classList.toggle('grow')
     })
-    .catch((error) => {
-        var errorCode = error.code
-        var errorMessage = error.message
+    .catch(error => {
+        console.log(error)
+        document.getElementById('sign-in-msg').innerHTML = `
+            <div class="error">${error.code}: ${error.message}</div>
+        `
     })
 }
 

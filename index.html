@@ -33,16 +33,18 @@
       </header>
       <main>
         <h1 class="projects-title">Projects</h1>
+        <!-- <i id="projects-loader" class="loader show fas fa-spinner fa-pulse"></i> -->
         <div class="projects">
           <section v-for="project in projects" class="project">
             <h1>{{ project.name }}</h1>
-            <img class="project-image" v-bind:src="'https://firebasestorage.googleapis.com/v0/b/jcahal-github-io.appspot.com/o/' + project.image + '?alt=media&token=345364ce-53da-4853-927d-18c256eb8083'" v-bind:alt="project.image"/>
+            <img class="project-image" v-bind:src="project.imageURL" v-bind:alt="project.image"/>
             <p>{{ project.description }}</p>
             <a v-bind:href="project.url"><i class="icon-project fas fa-globe" aria-hidden="true"></i></span></a>
             <a v-bind:href="project.source"><i class="icon-project fab fa-github-alt" aria-hidden="true"></i></span></a>
           </section>
         </div>
         <h1 class="skills-title">Skills</h1>
+        <!-- <i id="skills-loader" class="loader show fas fa-spinner fa-pulse"></i> -->
         <div class="skills">
           <ul>
             <li v-for="skill in skills">
@@ -66,6 +68,7 @@
     </div>
 
     <div>
+      <div id="admin-msg"></div>
       <aside id="admin" class="hide">
         <div id="admin-sign-in">
           <h3>Sign in</h3>
