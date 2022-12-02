@@ -1,7 +1,7 @@
 var Data = {
   "projects": {
     "ANSR%20Ascend%20Project": {
-      "description": "NASA funded high altitude balloon experiment. 2015-2016 school year firmware team member.",
+      "description": "As lead firmware engineer, I designed & developed sensory, recording and communications systems for a high altitude balloon payload which aimed to collect the most data points in the history of the program.",
       "image": "https://jcahal.github.io/assets/images/AscendProject.png",
       "image-alt-text": "Image of Ascend project payloads at near space altitude.",
       "name": "ANSR Ascend Project",
@@ -9,15 +9,15 @@ var Data = {
       "url": "http://pc-ascend-team.github.io"
     },
     "Gnito": {
-      "description": "Self-destructing one-way messenger",
+      "description": "A side project for full stack development practice, this self-destructing one-way messenger was built with MongoDB, Express.js and Vue.js",
       "image": "https://jcahal.github.io/assets/images/GnitoProject.png",
       "image-alt-text": "Image of the Gnito project homepage.",
       "name": "Gnito",
       "source": "https://github.com/jcahal/gnito",
       "url": "https://jcahal.github.io/gnito-client/"
     },
-    "StreetCard%20-%20SHUT%20DOWN": {
-      "description": "Connects homeless people with services and healthcare, easily and securely.",
+    "StreetCard": {
+      "description": "Platform that connects homeless people with social services. As a team member, I help designed a new tier of services which will allow clients to quickly share medical history with health care providers.",
       "image": "https://jcahal.github.io/assets/images/StreetCardProject.png",
       "image-alt-text": "Image of slide from StreetCard Project Presentation.",
       "name": "StreetCard"
