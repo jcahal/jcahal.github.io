@@ -26,7 +26,7 @@
             <div>
               <a aria-label="Send email" href="mailto:jacahal@gmail.com"><i class="icon-info fa fa-paper-plane" aria-hidden="true"></i></a>
               <a aria-label="My Github" target="_blank" href="https://github.com/jcahal"><i class="icon-info fab fa-github-alt" aria-hidden="true"></i></a>
-              <a aria-label="My Résumé" target="_blank" href="https://jcahal.gihub.io/assets/Jonathan-Cahal-Résumé.pdf"><i class="icon-info fas fa-file-alt"></i></span></a>
+              <a aria-label="My Résumé" target="_blank" href="https://jcahal.github.io/assets/Jonathan-Cahal-Résumé.pdf"><i class="icon-info fas fa-file-alt"></i></span></a>
             </div>
           </section>
         </div>
@@ -37,7 +37,7 @@
         <div class="projects">
           <section v-for="project in projects" class="project">
             <h1>{{ project.name }}</h1>
-            <img class="project-image" v-bind:src="'https://firebasestorage.googleapis.com/v0/b/jcahal-github-io.appspot.com/o/' + project.image + '?alt=media'" v-bind:alt="project.image"/>
+            <img class="project-image" v-bind:src="project.image" v-bind:alt="project.image-atl-text"/>
             <p>{{ project.description }}</p>
             <span v-if="project.url"><a v-bind:href="project.url"><i class="icon-project fas fa-globe" aria-hidden="true"></i></a></span>
             <span v-if="project.source"><a v-bind:href="project.source"><i class="icon-project fab fa-github-alt" aria-hidden="true"></i></a></span>
