@@ -37,7 +37,7 @@
         <div class="projects">
           <section v-for="project in projects" class="project">
             <h1>{{ project.name }}</h1>
-            <img class="project-image" v-bind:src="project.image" v-bind:alt="project.image-atl-text"/>
+            <img class="project-image" v-bind:src="project.image" />
             <p>{{ project.description }}</p>
             <span v-if="project.url"><a v-bind:href="project.url"><i class="icon-project fas fa-globe" aria-hidden="true"></i></a></span>
             <span v-if="project.source"><a v-bind:href="project.source"><i class="icon-project fab fa-github-alt" aria-hidden="true"></i></a></span>

@@ -2,7 +2,7 @@ var Data = {
   "projects": {
     "ANSR%20Ascend%20Project": {
       "description": "As lead firmware engineer, I designed & developed sensory, recording and communications systems for a high altitude balloon payload which aimed to collect the most data points in the history of the program.",
-      "image": "https://jcahal.github.io/assets/images/AscendProject.png",
+      "image": "https://jcahal.github.io/assets/images/AscendProject.JPG",
       "image-alt-text": "Image of Ascend project payloads at near space altitude.",
       "name": "ANSR Ascend Project",
       "source": "https://github.com/PC-Ascend-Team",
