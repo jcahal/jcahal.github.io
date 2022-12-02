@@ -26,7 +26,7 @@
             <div>
               <a aria-label="Send email" href="mailto:jacahal@gmail.com"><i class="icon-info fa fa-paper-plane" aria-hidden="true"></i></a>
               <a aria-label="My Github" target="_blank" href="https://github.com/jcahal"><i class="icon-info fab fa-github-alt" aria-hidden="true"></i></a>
-              <a aria-label="My Resumé" target="_blank" href="https://firebasestorage.googleapis.com/v0/b/jcahal-github-io.appspot.com/o/JonathanCahal.pdf?alt=media"><i class="icon-info fas fa-user-alt"></i></span></a>
+              <a aria-label="My Résumé" target="_blank" href="assets/Jonathan-Cahal-Résumé.pdf"><i class="icon-info fas fa-file-alt"></i></span></a>
             </div>
           </section>
         </div>
@@ -39,8 +39,8 @@
             <h1>{{ project.name }}</h1>
             <img class="project-image" v-bind:src="'https://firebasestorage.googleapis.com/v0/b/jcahal-github-io.appspot.com/o/' + project.image + '?alt=media'" v-bind:alt="project.image"/>
             <p>{{ project.description }}</p>
-            <a v-bind:href="project.url"><i class="icon-project fas fa-globe" aria-hidden="true"></i></span></a>
-            <a v-bind:href="project.source"><i class="icon-project fab fa-github-alt" aria-hidden="true"></i></span></a>
+            <span v-if="project.url"><a v-bind:href="project.url"><i class="icon-project fas fa-globe" aria-hidden="true"></i></a></span>
+            <span v-if="project.source"><a v-bind:href="project.source"><i class="icon-project fab fa-github-alt" aria-hidden="true"></i></a></span>
           </section>
         </div>
         <h1 class="skills-title">Skills</h1>
@@ -59,38 +59,12 @@
           <a href="https://vuejs.org">
             <img src="assets/images/vue-logo.png" />
           </a>
-          <img src="assets/images/plus.png" />
-          <a href="https://firebase.google.com">
-            <img src="assets/images/firebase-logo.png" />
-          </a>
         </div>
       </footer>
     </div>
 
-    <div>
-      <div id="admin-msg"></div>
-      <aside id="admin" class="hide">
-        <div id="admin-sign-in">
-          <h3>Sign in</h3>
-          <input type="email" name="admin-email" id="admin-email" placeholder="Email">
-          <input type="password" name="admin-password" id="admin-password" placeholder="Password">
-          <input type="button" value="Sign in" onclick="adminSignIn()">
-        </div>
-      </aside>
-      <div id="admin-toggle" onclick="toggleAdminPanel()">
-        <span class="fa-stack fa-2x">
-          <i class="fas fa-circle fa-stack-2x"></i>
-          <i class="fas fa-cog fa-stack-1x fa-inverse"></i>
-        </span>
-      </div>
-    </div>
-
-    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-database.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-storage.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-auth.js"></script>
-
     <script src="assets/js/vue.min.js"></script>
+    <script src="app/data.js"></script>
     <script src="app/app.vue.js"></script>
     <script src="assets/js/particles.min.js"></script>
     <script src="assets/js/sweet-scroll.min.js"></script>
