@@ -6,13 +6,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Jonathan Cahal, BSE Computer Systems</title>
-  <meta name="description" content="My Schnazzy Personal Webpage">
+  <title>Jonathan Cahal — ML Engineer</title>
+  <meta name="description" content="Jonathan Cahal — ML Engineer building end-to-end machine learning systems.">
 
-  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
   <link href="assets/css/all.min.css" rel="stylesheet"> <!-- FontAwesome -->
   <link rel="stylesheet" href="assets/css/main.css">
-  <link rel="shortcut icon" type="image/png" href="assets/favicon.png" >
+  <link rel="shortcut icon" type="image/png" href="assets/favicon.png">
 
 </head>
 
@@ -22,43 +21,67 @@
         <div id="particles">
           <section class="info">
             <h1>Jonathan Cahal</h1>
-            <p>Computer Systems Engineer</p>
-            <div>
+            <p>ML Engineer</p>
+            <div class="info-links">
               <a aria-label="Send email" href="mailto:jacahal@gmail.com"><i class="icon-info fa fa-paper-plane" aria-hidden="true"></i></a>
               <a aria-label="My Github" target="_blank" href="https://github.com/jcahal"><i class="icon-info fab fa-github-alt" aria-hidden="true"></i></a>
-              <a aria-label="My Résumé" target="_blank" href="https://jcahal.github.io/assets/Jonathan-Cahal-Résumé.pdf"><i class="icon-info fas fa-file-alt"></i></span></a>
+              <a aria-label="My Résumé" target="_blank" href="https://jcahal.github.io/assets/Jonathan-Cahal-Résumé.pdf"><i class="icon-info fas fa-file-alt" aria-hidden="true"></i></a>
             </div>
           </section>
         </div>
       </header>
+
       <main>
-        <h1 class="projects-title">Projects</h1>
-        <!-- <i id="projects-loader" class="loader show fas fa-spinner fa-pulse"></i> -->
-        <div class="projects">
-          <section v-for="project in projects" class="project">
-            <h1>{{ project.name }}</h1>
-            <img class="project-image" v-bind:src="project.image" />
-            <p>{{ project.description }}</p>
-            <span v-if="project.url"><a v-bind:href="project.url"><i class="icon-project fas fa-globe" aria-hidden="true"></i></a></span>
-            <span v-if="project.source"><a v-bind:href="project.source"><i class="icon-project fab fa-github-alt" aria-hidden="true"></i></a></span>
-          </section>
-        </div>
-        <h1 class="skills-title">Skills</h1>
-        <!-- <i id="skills-loader" class="loader show fas fa-spinner fa-pulse"></i> -->
-        <div class="skills">
-          <ul>
-            <li v-for="skill in skills">
-              {{ skill.name }}<br>
-              <i v-for="level in parseInt(skill.level, 10)" class="fas fa-star"></i>
-            </li>
-          </ul>
-        </div>
+        <section class="about-section">
+          <div class="section-inner">
+            <p class="about-text">{{ about }}</p>
+          </div>
+        </section>
+
+        <section class="projects-section">
+          <div class="section-inner">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects">
+              <article v-for="project in projects" class="project">
+                <img class="project-image" v-bind:src="project.image" v-bind:alt="project.imageAlt" />
+                <div class="project-body">
+                  <h3>{{ project.name }}</h3>
+                  <p>{{ project.description }}</p>
+                  <div class="project-links">
+                    <a v-if="project.url" v-bind:href="project.url" target="_blank" aria-label="Live demo"><i class="icon-project fas fa-globe" aria-hidden="true"></i></a>
+                    <a v-if="project.source" v-bind:href="project.source" target="_blank" aria-label="Source code"><i class="icon-project fab fa-github-alt" aria-hidden="true"></i></a>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <hr class="section-divider" />
+
+        <section class="skills-section">
+          <div class="section-inner">
+            <h2 class="section-title">Skills</h2>
+            <div class="skill-groups">
+              <div v-for="group in skillGroups" class="skill-group">
+                <h3 class="skill-group-name">{{ group.name }}</h3>
+                <div class="skill-tags">
+                  <span v-for="skill in group.skills" class="skill-tag">{{ skill }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
+
       <footer>
-        <div id="built-with">
-          <a href="https://vuejs.org">
-            <img src="assets/images/vue-logo.png" />
-          </a>
+        <div class="footer-inner">
+          <span class="footer-name">Jonathan Cahal &copy; 2026</span>
+          <div class="footer-links">
+            <a aria-label="Send email" href="mailto:jacahal@gmail.com"><i class="icon-info fa fa-paper-plane" aria-hidden="true"></i></a>
+            <a aria-label="My Github" target="_blank" href="https://github.com/jcahal"><i class="icon-info fab fa-github-alt" aria-hidden="true"></i></a>
+            <a aria-label="My Résumé" target="_blank" href="https://jcahal.github.io/assets/Jonathan-Cahal-Résumé.pdf"><i class="icon-info fas fa-file-alt" aria-hidden="true"></i></a>
+          </div>
         </div>
       </footer>
     </div>
