@@ -1,9 +1,10 @@
 let app = new Vue({
     el: '#app',
     data() {
-        return { 
+        return {
+            about: Data.about,
             projects: Data.projects,
-            skills: Data.skills
+            skillGroups: Data.skillGroups
         }
     }
 })
