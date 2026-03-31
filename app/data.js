@@ -46,6 +46,15 @@ var Data = {
       tags: ["Python", "pandas", "OOP", "CLI", "argparse"]
     },
     {
+      name: "E-Rate Scout",
+      description: "Full-stack SaaS platform for exploring and monitoring the FCC's E-Rate program. Search millions of data points across forms, entities, and providers with real-time filters, interactive visualizations, and daily change alerts.",
+      image: "assets/images/e-rate-scout.png",
+      imageAlt: "E-Rate Scout App screenshot",
+      source: null,
+      url: "https://eratescout.com",
+      tags: ["Vue.js", "Appwrite", "Fullstack", "SaaS", "Production]
+    },
+    {
       name: "ANSR Ascend Project",
       description: "As lead firmware engineer, designed and developed sensory, recording and communications systems for a high altitude balloon payload — collecting the most data points in program history.",
       image: "assets/images/AscendProject.JPG",
