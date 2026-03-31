@@ -52,7 +52,7 @@ var Data = {
       imageAlt: "E-Rate Scout App screenshot",
       source: null,
       url: "https://eratescout.com",
-      tags: ["Vue.js", "Appwrite", "Fullstack", "SaaS", "Production]
+      tags: ["Vue.js", "Appwrite", "Fullstack", "SaaS", "Production"]
     },
     {
       name: "ANSR Ascend Project",
