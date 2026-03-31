@@ -1,15 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Fugaz+One&family=Special+Elite&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap');
 
 /* ─── Base ─────────────────────────────────────────────── */
 
 body {
-    font-family: Special Elite, sans-serif;
+    font-family: 'DM Sans', sans-serif;
     margin: 0;
     color: #1a1a1a;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: Fugaz One, serif;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
     margin: 0;
 }
 
@@ -51,7 +52,7 @@ header {
 }
 
 .info p {
-    font-family: Special Elite, sans-serif;
+    font-family: 'DM Sans', sans-serif;
     margin-bottom: 1em;
     opacity: 0.9;
 }
@@ -102,11 +103,33 @@ header {
     border-bottom: 1px solid #e8e8e8;
 }
 
+.about-inner {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.about-photo {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 3px solid #3170ee;
+}
+
 .about-text {
     font-size: 1.15em;
-    max-width: 720px;
     line-height: 1.7;
     color: #333;
+}
+
+@media only screen and (max-width: 600px) {
+    .about-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.25rem;
+    }
 }
 
 /* ─── Projects ──────────────────────────────────────────── */
@@ -149,6 +172,24 @@ header {
     font-size: 0.95em;
     color: #444;
     margin-bottom: 1rem;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 0.85rem;
+}
+
+.project-tag {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.72em;
+    font-weight: 500;
+    color: #3170ee;
+    border: 1.5px solid #3170ee;
+    border-radius: 3px;
+    padding: 0.15rem 0.55rem;
+    letter-spacing: 0.02em;
 }
 
 .project-links {
@@ -216,7 +257,7 @@ header {
 .skill-tag {
     background: #3170ee;
     color: #ffffff;
-    font-family: Special Elite, sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-size: 0.9em;
     padding: 0.3rem 0.8rem;
     border-radius: 3px;
@@ -240,7 +281,7 @@ footer {
 }
 
 .footer-name {
-    font-family: Special Elite, sans-serif;
+    font-family: 'DM Sans', sans-serif;
     color: #ffffff;
     font-size: 0.95em;
     opacity: 0.9;
