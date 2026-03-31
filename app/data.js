@@ -13,37 +13,46 @@ var Data = {
       name: "ML Pipeline API",
       description: "Classification model wrapped in a FastAPI service, containerized with Docker and deployed to AWS. MLflow tracks experiment runs and model versions.",
       image: "assets/images/ml-pipeline-api.png",
-      imageAlt: "ML Pipeline API project screenshot",
+      imageAlt: "MLflow experiment tracking dashboard showing model runs and metrics.",
       source: "https://github.com/jcahal/ml-pipeline-api",
       url: null,
       tags: ["Python", "FastAPI", "Docker", "AWS", "MLflow"]
     },
     {
-      name: "PyTorch Sentiment Classifier",
-      description: "DistilBERT fine-tuned for sentiment classification, served via FastAPI. Vue.js frontend for live inference.",
+      name: "Sentiment Classifier",
+      description: "Fine-tuned DistilBERT model for text sentiment analysis, served via FastAPI with a Vue.js frontend. Enter any text and get a real-time prediction.",
       image: "assets/images/sentiment-classifier.png",
-      imageAlt: "PyTorch Sentiment Classifier project screenshot",
+      imageAlt: "Sentiment classifier web interface showing a text input and live prediction result.",
       source: "https://github.com/jcahal/sentiment-classifier",
-      url: "https://github.com/jcahal/sentiment-classifier",
-      tags: ["Python", "PyTorch", "NLP", "FastAPI", "Vue.js"]
+      url: "https://your-live-demo-url-here.com",
+      tags: ["PyTorch", "HuggingFace", "FastAPI", "Vue.js", "NLP"]
     },
     {
       name: "Model Monitoring System",
-      description: "Evidently AI integration for detecting data drift on a deployed model. Scheduled reports and alerting when feature distributions shift.",
+      description: "Data drift detection layer built on top of a deployed ML model. Evidently AI runs scheduled comparisons against training data baselines and surfaces drift reports via API.",
       image: "assets/images/model-monitoring.png",
-      imageAlt: "Model Monitoring System project screenshot",
+      imageAlt: "Evidently AI drift report showing feature distribution shifts over time.",
       source: "https://github.com/jcahal/model-monitoring",
       url: null,
-      tags: ["Python", "Evidently AI", "MLOps", "Docker"]
+      tags: ["Python", "Evidently AI", "FastAPI", "Docker", "MLOps"]
     },
     {
-      name: "Production SaaS App",
-      description: "Appwrite backend, Vue.js frontend, real users in production. Private repo.",
-      image: "assets/images/saas-app.png",
-      imageAlt: "Production SaaS App screenshot",
-      source: null,
+      name: "CSV Data Pipeline",
+      description: "Modular ETL pipeline built with OOP — DataLoader, DataTransformer, and Reporter classes with a CLI interface. Handles validation, null removal, normalization, and encoding.",
+      image: "assets/images/csv-pipeline.png",
+      imageAlt: "Terminal output showing the pipeline processing a CSV file end to end.",
+      source: "https://github.com/jcahal/csv-pipeline",
       url: null,
-      tags: ["Vue.js", "Appwrite", "Fullstack", "SaaS"]
+      tags: ["Python", "pandas", "OOP", "CLI", "argparse"]
+    },
+    {
+      name: "ANSR Ascend Project",
+      description: "As lead firmware engineer, designed and developed sensory, recording and communications systems for a high altitude balloon payload — collecting the most data points in program history.",
+      image: "assets/images/AscendProject.JPG",
+      imageAlt: "Ascend project payloads photographed at near space altitude.",
+      source: "https://github.com/PC-Ascend-Team",
+      url: "http://pc-ascend-team.github.io",
+      tags: ["C/C++", "Embedded Systems", "Firmware", "Sensors"]
     },
     {
       name: "incoGNITO",
