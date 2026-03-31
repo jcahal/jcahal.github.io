@@ -2,7 +2,7 @@ let app = new Vue({
     el: '#app',
     data() {
         return {
-            about: Data.about,
+            profile: Data.profile,
             projects: Data.projects,
             skillGroups: Data.skillGroups
         }
