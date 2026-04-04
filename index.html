@@ -40,16 +40,55 @@
           </div>
         </section>
 
+        <section class="experience-section">
+          <div class="section-inner">
+            <h2 class="section-title">Experience</h2>
+            <div class="timeline">
+              <article v-for="job in experience" class="timeline-item">
+                <div class="timeline-header">
+                  <div class="timeline-header-left">
+                    <h3 class="timeline-title">{{ job.title }}</h3>
+                    <span class="timeline-company">{{ job.company }}</span>
+                  </div>
+                  <span class="timeline-date">{{ job.dateRange }}</span>
+                </div>
+                <ul class="timeline-bullets">
+                  <li v-for="bullet in job.bullets">{{ bullet }}</li>
+                </ul>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="education-section">
+          <div class="section-inner">
+            <h2 class="section-title">Education</h2>
+            <div class="timeline">
+              <article v-for="item in education" class="timeline-item">
+                <div class="timeline-header">
+                  <div class="timeline-header-left">
+                    <h3 class="timeline-title">{{ item.credential }}</h3>
+                    <span class="timeline-company">{{ item.institution }}</span>
+                  </div>
+                  <span class="timeline-date">{{ item.dateRange }}</span>
+                </div>
+                <p v-if="item.notes" class="timeline-notes">{{ item.notes }}</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
         <section class="projects-section">
           <div class="section-inner">
             <h2 class="section-title">Projects</h2>
             <div class="projects">
-              <article v-for="project in projects" class="project">
+              <article v-for="project in projects" v-if="project.status != 'planned'" class="project">
                 <img class="project-image" v-bind:src="project.image" v-bind:alt="project.imageAlt" />
                 <div class="project-body">
                   <h3>{{ project.name }}</h3>
                   <p>{{ project.description }}</p>
                   <div class="project-tags" v-if="project.tags && project.tags.length">
+                    <span v-if="project.status === 'inProgress'" class="project-tag in-progress">Work in Progress</span>
                     <span v-for="tag in project.tags" class="project-tag">{{ tag }}</span>
                   </div>
                   <div class="project-links">
