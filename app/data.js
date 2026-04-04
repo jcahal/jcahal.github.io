@@ -10,7 +10,7 @@ var Data = {
 
   projects: [
     {
-      status: "planned",
+      status: "inProgress",
       name: "ML Pipeline API",
       description: "Classification model wrapped in a FastAPI service, containerized with Docker and deployed to AWS. MLflow tracks experiment runs and model versions.",
       image: "assets/images/ml-pipeline-api.png",
