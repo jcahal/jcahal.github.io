@@ -20,7 +20,7 @@ var Data = {
       tags: ["Python", "FastAPI", "Docker", "AWS", "MLflow"]
     },
     {
-      status: "planned",
+      status: "inProgress",
       name: "Sentiment Classifier",
       description: "Fine-tuned DistilBERT model for text sentiment analysis, served via FastAPI with a Vue.js frontend. Enter any text and get a real-time prediction.",
       image: "assets/images/sentiment-classifier.png",
