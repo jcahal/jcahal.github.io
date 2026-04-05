@@ -1,7 +1,7 @@
 var Data = {
   profile: {
     picture: "assets/images/ProfilePicture.jpeg",
-    about: "IT professional with 13 years of hands-on experience and a background in data analysis. Currently completing a Professional Certificate in Applied AI and Data Science through MIT Professional Education (May 2026). My goal is to transition into AI/ML full time — ideally remote.",
+    about: "IT professional with 13 years of hands-on experience and a background in data analysis. Currently completing a Professional Certificate in Applied AI and Data Science through MIT Professional Education (May 2026). My goal is to transition into AI/ML full time.",
     email: "jacahal+website@gmail.com",
     resume: "assets/Jonathan-Cahal-Resume.pdf",
     githubUrl: "https://github.com/jcahal",
